@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/css/demo1/style.bundle.css";
+@import "assets/css/demo1/skins/header/base/light.css";
+@import "assets/css/demo1/skins/header/menu/light.css";
+@import "assets/css/demo1/skins/brand/dark.css";
+@import "assets/css/demo1/skins/aside/dark.css";
+@import "assets/vendors/global/vendors.bundle.css";
+
+
+
+table {
+  width: 100%;
+}
+ 
+td, th {
+  width: 20%;
+}
+
+.dataTables_filter {
+  text-align: left;
+  position: relative;
+  float: right;
+}
+
+.loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url("./assets/img/loading/loadingDualSmall.gif") 50% 50% no-repeat rgba(249, 249, 249, 0);
+}

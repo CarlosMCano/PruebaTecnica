@@ -1,0 +1,49 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
+
+<div class="login-box" style="
+    width: 33%;
+    margin-left: 33%;
+    margin-top: 5%;
+    /* height: 10%; */
+">
+
+  <div class="login-logo">
+    <div style="font-size: 25px; text-align: center;"> Prueba Tecnica | Carlos Cano </div>
+  </div> <br>
+
+  <div class="card">
+    <div class="card-body login-card-body">
+      <div style="text-align: center;">
+        <p class="login-box-msg">Inicia sesión para comenzar</p> <br>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="input-group mb-3">
+        <input type="text" formControlName="correo" class="form-control" placeholder="Correo">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fa fa-envelope"></span>
+          </div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <input type="password" formControlName="clave" class="form-control" placeholder="Contraseña">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fa fa-lock"></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <br>
+
+        <div class="col-12">
+          <br>
+          <button [disabled]="!loginForm.valid" *ngIf="!loanding" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+          <br>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>

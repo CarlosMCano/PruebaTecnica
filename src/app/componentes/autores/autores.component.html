@@ -1,0 +1,75 @@
+<div class="kt-portlet">
+
+    <div class="kt-portlet__body">
+        <div class="kt-form kt-form--label-right kt-margin-t-20 kt-margin-b-10">
+            <div class="row align-items-center">
+                <div class="col-xl-8 order-2 order-xl-1"> 
+                    
+                    <h4>AUTORES Y LIBROS <i class="fa fa-info-circle" (click)="Info()"></i></h4> 
+                    <p *ngIf="this.info">Para ahorrar recursos en la busqueda y no saturar al server de peticiones, 
+                        dicha busqueda se puede realizar con | filterBy ... asi el filtro le costará a la maquina cliente y no al
+                        servidor. Para efectos de esta prueba laboral la busqueda se realiza consumiendo un endpoint
+                    </p><br>
+
+                    <div class="row align-items-center">
+
+                        <div class="col-md-3 kt-margin-b-20-tablet-and-mobile">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Autores por Id y FirstName"
+                                    [(ngModel)]="Filtro">
+                            </div>
+                        </div>
+                        <div class="col-md-3 kt-margin-b-20-tablet-and-mobile">
+                            <div class="form-group">
+                                <input type="date" class="form-control" placeholder="Fecha Inicio"
+                                    [(ngModel)]="fechaInicio">
+                            </div>
+                        </div>
+                        <div class="col-md-3 kt-margin-b-20-tablet-and-mobile">
+                            <div class="form-group">
+                                <input type="date" class="form-control" placeholder="Fecha Fin" [(ngModel)]="fechaFin">
+                            </div>
+                        </div>
+                        <div class="col-md-1 kt-margin-b-20-tablet-and-mobile">
+                            <div class="form-group">
+                                <button (click)="buscarfiltro()" class="btn btn-primary"> Buscar </button>
+                            </div>
+                        </div>
+                        <div class="col-md-2 kt-margin-b-20-tablet-and-mobile">
+                            <div class="form-group">
+                                <button (click)="RestablecerListaAutores()" class="btn btn-primary"> Lista completa </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="kt-form kt-form--label-right kt-margin-t-20 kt-margin-b-10">
+            <div *ngIf="this.lstAutores.length > 0">
+                <table class="table table-striped table-bordered table-hover dt-center no-footer">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 5% !important;"> Id </th>
+                            <th scope="col" style="width: 15% !important;"> Author </th>
+                            <th scope="col" style="width: 5% !important;"> IdBook </th>
+                            <th scope="col" style="width: 15% !important;"> Book </th>
+                            <th scope="col" style="width: 10% !important;"> publishDate </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of lstAutores | paginate: { itemsPerPage: 10, currentPage: p }">
+                            <td> {{ item.id }} </td>
+                            <td> {{ item.firstName }} {{ item.lastName }} </td>
+                            <td> {{ item.idBook }} </td>
+                            <td> {{ item.libro.title }} </td>
+                            <td> {{ item.libro.publishDate | date: 'dd/MM/yyyy'}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
